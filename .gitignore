@@ -1,0 +1,46 @@
+# Node modules (shared or individual)
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files (never commit secrets)
+.env
+.env.*
+
+# TypeScript build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sw?
+
+# Coverage reports
+coverage/
+.nyc_output/
+
+# Prisma
+prisma/migrations/
+
+# Package manager lock files (optional if consistent across repos)
+# Uncomment the one you're not using monorepo-wide
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# CI / test artifacts
+test-results/
+*.lcov
+
+# Misc
+*.log
