@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/priyansh-dimri/pressie/issues"
   },
-  "homepage": "https://github.com/priyansh-dimri/pressie#readme"
+  "homepage": "https://github.com/priyansh-dimri/pressie#readme",
+  "dependencies": {
+    "@nestjs/config": "^4.0.2",
+    "@prisma/client": "^6.8.2"
+  }
 }
