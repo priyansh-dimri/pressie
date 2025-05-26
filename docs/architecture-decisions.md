@@ -13,3 +13,8 @@ This file will contain all the decisions made during the project development.
 
 - Decision: We are going to use Passport with JWT Strategy for authentication process
 - Reason: JWT allows stateless and scalable authentication
+
+### 26-05-2025 - Adding guards and role based decorator
+
+- Decision: We are using custom guards and Decorators to manage the access control
+- Reason: They separate the authentication and authorization concern.
