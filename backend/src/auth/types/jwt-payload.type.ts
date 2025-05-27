@@ -1,4 +1,4 @@
-import { Role } from '../role.enum';
+import { Role } from '@prisma/client';
 
 export interface JwtPayload {
   sub: string;

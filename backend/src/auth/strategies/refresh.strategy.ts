@@ -5,10 +5,14 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { JwtPayload } from '../types/jwt-payload.type';
 import { Request } from 'express';
 import { extractRefreshToken } from 'src/common/utils/extract-refresh-token';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
-  constructor(private configService: ConfigService) {
+  constructor(
+    private configService: ConfigService,
+    private authService: AuthService,
+  ) {
     const secret = configService.get<string>('JWT_REFRESH_SECRET', {
       infer: true,
     });
@@ -27,13 +31,22 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
     });
   }
 
-  validate(req: Request, payload: JwtPayload) {
+  async validate(req: Request, payload: JwtPayload) {
     const refreshToken = extractRefreshToken(req);
 
     if (!refreshToken) {
       throw new UnauthorizedException('Refresh Token Missing');
     }
 
-    return { userId: payload.sub, role: payload.role };
+    const isValid = await this.authService.validateRefreshToken(
+      payload.sub,
+      refreshToken,
+    );
+
+    if (!isValid) {
+      throw new UnauthorizedException('Refresh Token Invalid');
+    }
+
+    return { userId: payload.sub, role: payload.role, refreshToken };
   }
 }

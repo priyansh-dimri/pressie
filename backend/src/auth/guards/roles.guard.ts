@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Observable } from 'rxjs';
-import { Role } from '../role.enum';
-
+import { Role } from '@prisma/client';
 interface RequestWithUser extends Request {
   user: {
     userId: string;
